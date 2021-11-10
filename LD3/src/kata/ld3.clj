@@ -70,14 +70,10 @@
 (assert (= '(:a :b :d :e)
            (remove-at '(:a :b :c :d :e) 2)))
 
-;; 9. Insert a new element at the N-th position of a list. ????????
+;; 9. Insert a new element at the N-th position of a list.
 (defn insert-at [x xs n]
-  (let [[before after] (my-drop xs (dec n))]
-    (if (empty? after)
-      (if (= (count before) (dec n))
-        (concat before (replicate 1 x))
-        before)
-      (concat before (conj after x)))))
+  (let [[l r] (split-at n xs)]
+    (concat l [x] r)))
 
 (insert-at 9 [1 2 3 4] 4)
 
