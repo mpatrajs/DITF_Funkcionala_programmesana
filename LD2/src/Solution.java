@@ -7,12 +7,12 @@ public class Solution {
         if (x < 10) {
             return x;
         }else {
-            int s = 0;
+            int Sum = 0;
             do {
-                s += x % 10;
+                Sum += x % 10;
                 x = x / 10;
             }while (x > 0);
-            return superDigit(s);
+            return superDigit(Sum);
         }
     }
 
