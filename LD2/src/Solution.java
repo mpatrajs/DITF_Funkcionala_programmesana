@@ -2,17 +2,24 @@ import java.util.Scanner;
 
 public class Solution {
 
-    static long superDigit(long x)
+    private static long superDigit(long x)
     {
-        if (x == 0)
-            return 0;
-        return (x % 9 == 0) ? 9 : (x % 9);
+        if (x < 10) {
+            return x;
+        }else {
+            int s = 0;
+            do {
+                s += x % 10;
+                x = x / 10;
+            }while (x > 0);
+            return superDigit(s);
+        }
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter number: ");
-        int i = sc.nextInt();
+        long i = sc.nextInt();
         long  result = superDigit(i);
         System.out.println(result);
     }
